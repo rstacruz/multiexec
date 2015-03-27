@@ -13,5 +13,14 @@
   "license": "MIT",
   "dependencies": {
     "split": "^0.3.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rstacruz/multiexec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rstacruz/multiexec/issues"
+  },
+  "homepage": "https://github.com/rstacruz/multiexec"
 }
