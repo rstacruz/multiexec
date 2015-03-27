@@ -1,5 +1,5 @@
 {
-  "name": "parallel",
+  "name": "multiexec",
   "version": "0.0.1",
   "description": "Run multiple commands in parallel.",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
   "bin": {
-    "parallel": "./bin/parallel"
+    "multiexec": "./bin/multiexec"
   },
   "license": "MIT",
   "dependencies": {

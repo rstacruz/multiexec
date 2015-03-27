@@ -3,7 +3,7 @@
 Run 2 or more commands in parallel.
 
 ```
-npm install -g ??
+npm install -g multiexec
 ```
 
 ```
