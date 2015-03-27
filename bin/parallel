@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+var spawn = require('child_process').spawn;
+var split = require('split');
+var args = process.argv.slice(2);
+
+if (args.length === 0) {
+  var base = require('path').basename(process.argv[1]);
+  console.log("Usage: " + base + " <cmd1> [<cmd2> ...]");
+  process.exit(1);
+}
+
+runAll(args);
+
+/*
+ * run many commands
+ * runAll(['ls', 'sleep 3']);
+ */
+
+function runAll (commands) {
+  var procs = commands.map(run);
+
+  process.on('SIGINT', function () {
+    console.log("\n");
+    print('!', 'sigint received, exiting', 31);
+  });
+}
+
+/*
+ * run a command
+ * run('ls', 0);
+ */
+
+function run (cmd, i) {
+  log("running: " + cmd, 1);
+
+  var proc = spawn("sh", ["-c", cmd]);
+
+  proc.on('error', function(err) {
+    log("error: " + err.code);
+  });
+  
+  proc.stdout
+    .pipe(split())
+    .on('data', function (line) { log(line); });
+
+  proc.stderr
+    .pipe(split())
+    .on('data', function (line) { log(line, 31); });
+
+  proc.on('exit', function(code) {
+    if (code > 0) {
+      log("exit with code " + code + ", aborting", '1;31');
+      process.exit(code);
+    } else {
+      log("exiting", 1);
+    }
+  });
+
+  function log(str, color) {
+    print(i, str, color);
+  }
+
+  return proc;
+}
+
+/*
+ * printing helper
+ */
+
+function print(i, str, color) {
+  if (!color) color = 0;
+  var c = typeof i === 'number' ? (i % 6) + 32 : 1;
+  console.log("\033["+c+"m" + i + "\033[0m\033[0" + color + "m  " + str + "\033[0m");
+}
+

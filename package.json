@@ -1,0 +1,17 @@
+{
+  "name": "parallel",
+  "version": "0.0.1",
+  "description": "Run multiple commands in parallel.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
+  "bin": {
+    "parallel": "./bin/parallel"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "split": "^0.3.3"
+  }
+}
