@@ -34,7 +34,7 @@ $ multiexec "jekyll build --watch" "browser-sync start --server _site --files='_
 1        Generating... done.
 ```
 
-If you dev environment has multiple processes running together, you can use `multiexec` to run them both under one process. In this example, we'll run [rails] with [guard](rubygems.org/gems/guard) In this example, we'll run [Rails](http://rubyonrails.org/)'s development server with [Guard](rubygems.org/gems/guard) for auto-reloading.
+If you dev environment has multiple processes running together, you can use `multiexec` to run them both under one process. In this example, we'll run [Rails](http://rubyonrails.org/)'s development server with [Guard](rubygems.org/gems/guard) for auto-reloading.
 
 ```
 multiexec "bundle exec rails s" "bundle exec guard"
