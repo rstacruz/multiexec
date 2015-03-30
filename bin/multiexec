@@ -19,9 +19,16 @@ runAll(args);
 function runAll (commands) {
   var procs = commands.map(run);
 
-  process.on('SIGINT', function () {
-    console.log("\n");
-    print('!', 'sigint received, exiting', 31);
+  ['SIGTERM', 'SIGHUP', 'SIGBREAK', 'SIGINT', 'SIGWINCH'].forEach(function (signal) {
+    process.on(signal, function () {
+      console.log("\n");
+      print('!', '' + signal + ' received', 31);
+      procs.forEach(function (proc) { proc.kill(signal); });
+    });
+  });
+
+  process.on('exit', function () {
+      procs.forEach(function (proc) { proc.kill('SIGKILL'); });
   });
 }
 
