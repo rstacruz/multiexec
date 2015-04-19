@@ -12,6 +12,15 @@
 .SH "DESCRIPTION"
 It runs two or more commands in parallel\.
 .
+.P
+When one of the subprocesses exits with an error code, all the subprocesses will be terminated\.
+.
+.SH "OPTIONS"
+.
+.TP
+\fBcommandN\fR
+A command to be executed, including its arguments\. This command will be passed onto \fBsh \-c\fR, and so it will be shell\-separated as needed\.
+.
 .SH "EXAMPLE"
 If you dev environment has multiple processes running together, you can use \fBmultiexec\fR to run them both under one process\. In this example, we\'ll run Rails\'s development server with Guard\.
 .

@@ -68,6 +68,7 @@
     <a href="#NAME">NAME</a>
     <a href="#SYNOPSIS">SYNOPSIS</a>
     <a href="#DESCRIPTION">DESCRIPTION</a>
+    <a href="#OPTIONS">OPTIONS</a>
     <a href="#EXAMPLE">EXAMPLE</a>
   </div>
 
@@ -89,6 +90,15 @@
 <h2 id="DESCRIPTION">DESCRIPTION</h2>
 
 <p>It runs two or more commands in parallel.</p>
+
+<p>When one of the subprocesses exits with an error code, all the subprocesses will be terminated.</p>
+
+<h2 id="OPTIONS">OPTIONS</h2>
+
+<dl>
+<dt><code>commandN</code> </dt><dd>A command to be executed, including its arguments. This command will be passed onto <code>sh -c</code>, and so it will be shell-separated as needed.</dd>
+</dl>
+
 
 <h2 id="EXAMPLE">EXAMPLE</h2>
 
