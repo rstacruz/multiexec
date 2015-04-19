@@ -1,0 +1,27 @@
+.\" generated with Ronn/v0.7.3
+.\" http://github.com/rtomayko/ronn/tree/0.7.3
+.
+.TH "MULTIEXEC" "1" "April 2015" "@rstacruz" ""
+.
+.SH "NAME"
+\fBmultiexec\fR \- run 2 or more commands in parallel
+.
+.SH "SYNOPSIS"
+\fBmultiexec\fR \fIcommand1\fR [\fIcommand2\fR] [\fIcommandN\fR \.\.\.]
+.
+.SH "DESCRIPTION"
+It runs two or more commands in parallel\.
+.
+.SH "EXAMPLE"
+If you dev environment has multiple processes running together, you can use \fBmultiexec\fR to run them both under one process\. In this example, we\'ll run Rails\'s development server with Guard\.
+.
+.IP "" 4
+.
+.nf
+
+multiexec "bundle exec rails s" "bundle exec guard"
+.
+.fi
+.
+.IP "" 0
+
