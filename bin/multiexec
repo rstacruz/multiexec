@@ -9,6 +9,11 @@ if (args.length === 0) {
   process.exit(1);
 }
 
+if (args.join(' ') === '--help') {
+  man('../man/multiexec.1');
+  process.exit(0);
+}
+
 runAll(args);
 
 /*
@@ -78,5 +83,17 @@ function print(i, str, color) {
   if (!color) color = 0;
   var c = typeof i === 'number' ? (i % 6) + 32 : 1;
   console.log("\033["+c+"m" + i + "\033[0m\033[0" + color + "m  " + str + "\033[0m");
+}
+
+/*
+ * opens a man page
+ *
+ *     man('ls')
+ *     man('../man/multiexec.1')
+ */
+
+function man (path) {
+  var page = /^\./.test(path) ? require('path').join(__dirname, path) : path;
+  return require('child_process').execSync('man '+page, { stdio: 'inherit' });
 }
 
